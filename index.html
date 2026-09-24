@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Victor O. Olowofeso</title>
+<meta name="description" content="Victor O. Olowofeso — AI systems engineer and researcher working on machine learning systems, inference runtimes, compilers, optimization, and low-level systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfaf7; --surface:#ffffff; --ink:#1a1a18; --ink-soft:#4a4a45;
+  --muted:#75746c; --rule:#e3e0d8; --accent:#7a2e2e; --accent-soft:#f0e7e4;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#14140f; --surface:#1c1c17; --ink:#eae7dd; --ink-soft:#bab6a9;
+    --muted:#8d897c; --rule:#302f28; --accent:#d99a8f; --accent-soft:#2a201d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14140f; --surface:#1c1c17; --ink:#eae7dd; --ink-soft:#bab6a9;
+  --muted:#8d897c; --rule:#302f28; --accent:#d99a8f; --accent-soft:#2a201d;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--serif); font-size:18px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 16px}
+a{color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .15s}
+a:hover{border-bottom-color:var(--accent)}
+
+/* ---------- masthead ---------- */
+header.masthead{padding:72px 0 0}
+.id{display:flex; gap:32px; align-items:flex-start}
+.portrait{
+  flex:0 0 132px; width:132px; height:132px; border-radius:3px;
+  background:var(--accent-soft); border:1px solid var(--rule);
+  display:grid; place-items:center; overflow:hidden;
+}
+.portrait img{width:100%; height:100%; object-fit:cover; display:block}
+.monogram{font-family:var(--serif); font-size:44px; color:var(--accent); letter-spacing:.02em}
+h1{font-family:var(--serif); font-size:40px; font-weight:500; letter-spacing:-.015em; margin:0 0 6px; line-height:1.15}
+.role{font-family:var(--sans); font-size:14.5px; color:var(--muted); margin:0 0 14px; letter-spacing:.01em}
+.contact{font-family:var(--sans); font-size:14px; display:flex; flex-wrap:wrap; gap:6px 14px; color:var(--ink-soft)}
+.contact a{color:var(--ink-soft)}
+.contact a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+
+/* ---------- nav ---------- */
+nav{
+  margin:44px 0 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  font-family:var(--sans); font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+}
+nav ul{list-style:none; margin:0; padding:12px 0; display:flex; flex-wrap:wrap; gap:4px 26px}
+nav a{color:var(--muted)}
+nav a:hover{color:var(--accent)}
+
+/* ---------- sections ---------- */
+section{padding:44px 0 0}
+h2{
+  font-family:var(--sans); font-size:12.5px; font-weight:600;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--muted);
+  margin:0 0 20px; padding-bottom:9px; border-bottom:1px solid var(--rule);
+}
+p{margin:0 0 17px; color:var(--ink-soft)}
+p.lead{color:var(--ink)}
+strong{color:var(--ink); font-weight:600}
+
+/* ---------- interests ---------- */
+.tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px; padding:0; list-style:none}
+.tags li{
+  font-family:var(--sans); font-size:13px; color:var(--ink-soft);
+  border:1px solid var(--rule); background:var(--surface);
+  border-radius:100px; padding:5px 13px;
+}
+
+/* ---------- entries ---------- */
+.entry{padding:0 0 26px; margin:0 0 26px; border-bottom:1px solid var(--rule)}
+.entry:last-child{border-bottom:0; margin-bottom:0; padding-bottom:0}
+.entry-head{display:flex; justify-content:space-between; align-items:baseline; gap:18px; flex-wrap:wrap}
+.entry-title{font-size:19.5px; font-weight:500; margin:0; color:var(--ink); line-height:1.35}
+.entry-meta{font-family:var(--sans); font-size:12.5px; color:var(--muted); white-space:nowrap; letter-spacing:.02em}
+.entry-sub{font-family:var(--sans); font-size:14px; color:var(--muted); margin:4px 0 12px; font-style:normal}
+.entry ul{margin:0; padding-left:1.15em; color:var(--ink-soft)}
+.entry ul li{margin-bottom:9px; padding-left:3px}
+.entry ul li:last-child{margin-bottom:0}
+.entry ul li::marker{color:var(--muted)}
+
+/* ---------- project list ---------- */
+.projects{list-style:none; margin:0; padding:0}
+.projects li{padding:0 0 18px; margin:0 0 18px; border-bottom:1px solid var(--rule)}
+.projects li:last-child{border-bottom:0; margin-bottom:0; padding-bottom:0}
+.proj-title{font-size:18.5px; color:var(--ink); display:block; margin-bottom:3px}
+.proj-note{font-family:var(--sans); font-size:14px; color:var(--ink-soft); margin:0}
+.venue{font-family:var(--mono); font-size:11.5px; color:var(--muted); letter-spacing:.03em; text-transform:uppercase}
+
+/* ---------- education / awards ---------- */
+.edu{margin:0 0 22px}
+.edu:last-child{margin-bottom:0}
+.awards{list-style:none; margin:0; padding:0}
+.awards li{
+  padding:0 0 0 20px; margin:0 0 12px; position:relative; color:var(--ink-soft); font-size:17.5px;
+}
+.awards li:last-child{margin-bottom:0}
+.awards li::before{content:"—"; position:absolute; left:0; color:var(--muted)}
+
+/* ---------- stack ---------- */
+.stack{font-family:var(--mono); font-size:13px; color:var(--muted); line-height:2; word-spacing:.1em}
+
+/* ---------- footer ---------- */
+footer{
+  margin-top:56px; padding:22px 0 56px; border-top:1px solid var(--rule);
+  font-family:var(--sans); font-size:13px; color:var(--muted);
+  display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+}
+
+@media (max-width:620px){
+  body{font-size:17px}
+  header.masthead{padding-top:44px}
+  .id{flex-direction:column; gap:22px}
+  .portrait{flex-basis:96px; width:96px; height:96px}
+  .monogram{font-size:32px}
+  h1{font-size:32px}
+  nav{margin-top:32px}
+  nav ul{gap:4px 18px}
+  section{padding-top:36px}
+  .entry-head{gap:2px}
+  .entry-meta{white-space:normal}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="id">
+      <div class="portrait">
+        <!-- Swap this block for: <img src="assets/portrait.jpg" alt="Victor O. Olowofeso"> -->
+        <span class="monogram">VO</span>
+      </div>
+      <div>
+        <h1>Victor O. Olowofeso</h1>
+        <p class="role">AI Systems Engineer &amp; Researcher — Machine Learning Systems, Compilers, Optimization</p>
+        <div class="contact">
+          <a href="mailto:volowofeso@gmail.com">volowofeso@gmail.com</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://github.com/olamide142">GitHub</a>
+          <span aria-hidden="true">·</span>
+          <a href="assets/Victor_Olowofeso_CV.pdf">Curriculum Vitae</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://www.linkedin.com/in/REPLACE-ME">LinkedIn</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://scholar.google.com/citations?user=REPLACE-ME">Google Scholar</a>
+        </div>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#awards">Awards</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="lead">I am an AI systems engineer and researcher building high-performance infrastructure for intelligent systems. My work sits where machine learning meets low-level systems engineering: inference runtimes, compilers, scheduling policies, and the memory and execution machinery that decides whether a model is merely correct or actually fast.</p>
+    <p>Most recently I spent three and a half years at <strong>Akamai Technologies</strong> in London, where I architected a next-generation DNS firewall serving 280M+ daily requests and led an LLM-powered analytics platform processing 5B+ network events monthly. Before that I worked on distributed credit-risk calculation systems at <strong>JPMorgan Chase</strong>. I hold an MSc in Computer Science with Distinction from <strong>Coventry University</strong>.</p>
+    <p>I am currently building <a href="https://github.com/olamide142"><strong>Ola-RT</strong></a>, an experimental inference runtime and research platform for adaptive, scalable model execution, and I am seeking PhD opportunities in machine learning systems and optimization.</p>
+  </section>
+
+  <section id="research">
+    <h2>Research Interests</h2>
+    <ul class="tags">
+      <li>Machine Learning Systems</li>
+      <li>Genetic Programming</li>
+      <li>Optimization</li>
+      <li>Formal Logic &amp; Methods</li>
+      <li>Reinforcement Learning</li>
+      <li>Compilers</li>
+      <li>Low-Level Systems</li>
+      <li>Operations Research</li>
+    </ul>
+    <p>My research interests sit at the intersection of machine learning systems, operations research, optimization, and systems engineering. Concretely, I am interested in how inference systems should <em>decide</em> — how execution policies, scheduling, and memory management can adapt to workload structure rather than being fixed at deployment time.</p>
+    <p>Active threads include LLM and VLM inference systems; dynamic inference scheduling and execution policies; KV-cache management, batching, and memory optimization; GPU kernels and ML compilers; distributed and adaptive AI systems; and eBPF and kernel-level security.</p>
+    <p class="stack">Rust · C/C++ · Python · CUDA · Burn · CubeCL · eBPF · Kafka · ClickHouse · Kubernetes · Terraform</p>
+  </section>
+
+  <section id="projects">
+    <h2>Research &amp; Projects</h2>
+    <ul class="projects">
+      <li>
+        <span class="proj-title">Ola-RT — An Experimental AI Inference Runtime</span>
+        <p class="proj-note">A research platform for efficient, adaptive, and scalable model execution, exploring dynamic scheduling, KV-cache management, and compiler-assisted kernel selection.</p>
+      </li>
+      <li>
+        <span class="proj-title">A Domain-Specific Language Compiler for Security Rule Definition</span>
+        <p class="proj-note">Designed and implemented a compiler for a DSL powering <a href="https://olopa.io"><strong>olopa.io</strong></a>, a kernel-native cybersecurity platform, enabling expressive and verifiable definition of security rules.</p>
+      </li>
+      <li>
+        <span class="proj-title">Deep Reinforcement Learning for Collision Avoidance in Highway Simulation</span>
+        <p class="proj-note">Policy learning for autonomous collision avoidance under a high-speed multi-agent highway simulation.</p>
+      </li>
+      <li>
+        <span class="proj-title">Detection of Change in the Arctic via Satellite Imagery and Unsupervised Learning</span>
+        <p class="proj-note">Applied unsupervised machine learning techniques to satellite image analysis for detecting environmental change across Arctic regions.</p>
+      </li>
+      <li>
+        <span class="proj-title">Modelling Personal Wealth Dynamics: A Calculus and Monte Carlo Approach to Compounding and Risk</span>
+        <p class="proj-note">A stochastic treatment of long-horizon compounding, combining closed-form calculus with Monte Carlo simulation of risk.</p>
+      </li>
+      <li>
+        <span class="proj-title">Secured Hybrid-Based Language Translation System</span>
+        <p class="proj-note">A hybrid translation architecture with security guarantees over the translation pipeline.</p>
+      </li>
+      <li>
+        <span class="proj-title">Olareport — AI-Powered Educational Platform</span>
+        <p class="proj-note">Founded <a href="https://olareport.com"><strong>olareport.com</strong></a>, an AI platform supporting teachers, educators, and students.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">Akamai Technologies</h3>
+        <span class="entry-meta">Oct 2022 – Apr 2026 · London, UK</span>
+      </div>
+      <p class="entry-sub">Senior Software Engineer II — Secure Internet Access</p>
+      <ul>
+        <li>Architected and launched a next-generation DNS firewall protecting <strong>280M+ daily DNS requests</strong> across 120+ enterprise customers, securing hybrid cloud and Kubernetes environments; contributed to the expansion of Akamai's Zero Trust portfolio with an estimated $15M+ ARR opportunity.</li>
+        <li>Designed a behavioral authorization system performing real-time risk evaluation across identities, devices, workloads, and API actions, enabling dynamic access control beyond traditional RBAC and WAF approaches.</li>
+        <li>Led development of an LLM-powered analytics and reporting platform processing <strong>5B+ network events monthly</strong>, building Python data pipelines and retrieval workflows that turned large-scale telemetry into customer-specific insights, anomaly detection, and automated remediation.</li>
+        <li>Developed Retrieval-Augmented Generation pipelines combining security telemetry, product metadata, and customer context; AI-generated recommendations increased upsell engagement by 30%+.</li>
+        <li>Built an MCP/agent tooling server interfacing directly with Akamai DNS systems, exposing DNS operations and telemetry as tools for AI agents with secure querying, diagnostics, and automated workflows.</li>
+        <li>Engineered scalable AI services and APIs for LLM inference, orchestration, and structured output generation with production-grade performance and observability.</li>
+        <li>Implemented deployment governance automation validating telemetry, compliance, and performance prior to release — reducing rollback incidents by 45% and accelerating release cycles by 35%.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">JPMorgan Chase &amp; Co.</h3>
+        <span class="entry-meta">Sep 2021 – Oct 2022 · Glasgow, UK</span>
+      </div>
+      <p class="entry-sub">Software Engineer — Credit Risk Management</p>
+      <ul>
+        <li>Led modernization of a legacy distributed calculation system, re-architecting it in Python and migrating critical data sources to a modern data warehouse, substantially improving data processing and analytical performance.</li>
+        <li>Owned a mission-critical distributed codebase underpinning the accuracy of systems that process millions of trades and transactions daily in support of firm-wide risk management.</li>
+        <li>Partnered with data engineering and risk analysis stakeholders to deliver solutions aligned with organizational risk objectives.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">Sidmach Technology Ltd.</h3>
+        <span class="entry-meta">Dec 2018 – 2019 · Abuja, Nigeria</span>
+      </div>
+      <p class="entry-sub">Software Engineer</p>
+      <ul>
+        <li>Built and maintained a high-availability computer-based assessment application used by millions of students nationwide during the Joint Admissions and Matriculation Board (JAMB) examinations.</li>
+        <li>Engineered a customer experience service portal and its data pipeline for capture, formatting, and visualization of customer data.</li>
+        <li>Contributed to a biometrics-based attendance system for the National Youth Service Corps (NYSC).</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">NACOSS, ABUAD Chapter</h3>
+        <span class="entry-meta">Sep 2017 – 2018 · Ekiti, Nigeria</span>
+      </div>
+      <p class="entry-sub">Software Director</p>
+      <ul>
+        <li>Mentored undergraduate students in programming and software development.</li>
+        <li>Designed and implemented a secure electronic voting system in Java and JavaFX for the NACOSS election.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">Aptech</h3>
+        <span class="entry-meta">Jun 2016 – Aug 2017 · Abuja, Nigeria</span>
+      </div>
+      <p class="entry-sub">Software Engineering Intern</p>
+      <ul>
+        <li>Developed interactive desktop applications in Java and JavaFX backed by relational databases.</li>
+        <li>Contributed across the full development lifecycle of small-scale projects, from requirements gathering to deployment.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu entry">
+      <div class="entry-head">
+        <h3 class="entry-title">MSc (Hons) Computer Science</h3>
+        <span class="entry-meta">Coventry University</span>
+      </div>
+      <p class="entry-sub">Distinction · Dean's List of Academic Excellence</p>
+    </div>
+    <div class="edu entry">
+      <div class="entry-head">
+        <h3 class="entry-title">BSc (Hons) Computer Science</h3>
+        <span class="entry-meta">Afe Babalola University</span>
+      </div>
+      <p class="entry-sub">GPA 4.27 / 5.0</p>
+    </div>
+  </section>
+
+  <section id="awards">
+    <h2>Awards &amp; Honours</h2>
+    <ul class="awards">
+      <li>Dean's List of Academic Excellence — Coventry University, 2021</li>
+      <li>Most Innovative Student Award — NACOSS ABUAD Chapter, 2018</li>
+      <li>Second Place — Nigeria Codefest Hackathon, 2018</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Victor O. Olowofeso</span>
+    <span><a href="assets/Victor_Olowofeso_CV.pdf">CV (PDF)</a> · <a href="https://github.com/olamide142">GitHub</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
