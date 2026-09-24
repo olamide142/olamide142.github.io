@@ -82,16 +82,6 @@ strong{color:var(--ink); font-weight:600}
 }
 
 /* ---------- entries ---------- */
-.entry{padding:0 0 26px; margin:0 0 26px; border-bottom:1px solid var(--rule)}
-.entry:last-child{border-bottom:0; margin-bottom:0; padding-bottom:0}
-.entry-head{display:flex; justify-content:space-between; align-items:baseline; gap:18px; flex-wrap:wrap}
-.entry-title{font-size:19.5px; font-weight:500; margin:0; color:var(--ink); line-height:1.35}
-.entry-meta{font-family:var(--sans); font-size:12.5px; color:var(--muted); white-space:nowrap; letter-spacing:.02em}
-.entry-sub{font-family:var(--sans); font-size:14px; color:var(--muted); margin:4px 0 12px; font-style:normal}
-.entry ul{margin:0; padding-left:1.15em; color:var(--ink-soft)}
-.entry ul li{margin-bottom:9px; padding-left:3px}
-.entry ul li:last-child{margin-bottom:0}
-.entry ul li::marker{color:var(--muted)}
 
 /* ---------- project list ---------- */
 .projects{list-style:none; margin:0; padding:0}
@@ -101,15 +91,6 @@ strong{color:var(--ink); font-weight:600}
 .proj-note{font-family:var(--sans); font-size:14px; color:var(--ink-soft); margin:0}
 .venue{display:block; font-family:var(--mono); font-size:11.5px; color:var(--muted); letter-spacing:.03em; text-transform:uppercase; margin:0 0 7px}
 
-/* ---------- education / awards ---------- */
-.edu{margin:0 0 22px}
-.edu:last-child{margin-bottom:0}
-.awards{list-style:none; margin:0; padding:0}
-.awards li{
-  padding:0 0 0 20px; margin:0 0 12px; position:relative; color:var(--ink-soft); font-size:17.5px;
-}
-.awards li:last-child{margin-bottom:0}
-.awards li::before{content:"—"; position:absolute; left:0; color:var(--muted)}
 
 /* ---------- stack ---------- */
 .quote{border-left:2px solid var(--accent); padding-left:20px; font-style:italic; color:var(--ink); margin:0 0 17px}
@@ -132,9 +113,7 @@ footer{
   nav{margin-top:32px}
   nav ul{gap:4px 18px}
   section{padding-top:36px}
-  .entry-head{gap:2px}
-  .entry-meta{white-space:normal}
-}
+    }
 </style>
 </head>
 <body>
@@ -149,13 +128,11 @@ footer{
       </div>
       <div>
         <h1>Victor O. Olowofeso</h1>
-        <p class="role">PhD Student — Machine Learning Systems, Compilers, Optimization</p>
+        <p class="role">PhD Student, Nile University of Nigeria — Machine Learning Systems &amp; Optimization</p>
         <div class="contact">
           <a href="mailto:volowofeso@gmail.com">volowofeso@gmail.com</a>
           <span aria-hidden="true">·</span>
           <a href="https://github.com/olamide142">GitHub</a>
-          <span aria-hidden="true">·</span>
-          <a href="assets/Victor_Olowofeso_CV.pdf">Curriculum Vitae</a>
           <span aria-hidden="true">·</span>
           <a href="https://www.linkedin.com/in/victor-o-olowofeso-9631a117a/">LinkedIn</a>
         </div>
@@ -167,9 +144,6 @@ footer{
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#awards">Awards</a></li>
       </ul>
     </nav>
   </header>
@@ -177,8 +151,8 @@ footer{
   <section id="about">
     <h2>About</h2>
     <p class="lead">I am an AI systems engineer and researcher building high-performance infrastructure for intelligent systems. My work sits where machine learning meets low-level systems engineering: inference runtimes, compilers, scheduling policies, and the memory and execution machinery that decides whether a model is merely correct or actually fast.</p>
-    <p>Most recently I spent three and a half years at <strong>Akamai Technologies</strong> in London, where I architected a next-generation DNS firewall serving 280M+ daily requests and led an LLM-powered analytics platform processing 5B+ network events monthly. Before that I worked on distributed credit-risk calculation systems at <strong>JPMorgan Chase</strong>. I hold an MSc in Computer Science with Distinction from <strong>Coventry University</strong>.</p>
-    <p>I recently began my PhD. My research asks how generative AI inference systems should <em>decide</em>: modern serving engines make constant choices about admission, batching, scheduling, KV-cache allocation, placement and parallelism, but those decisions are buried inside engine-specific heuristics, making them hard to describe, compare, analyse or optimize independently of their implementations. I am working towards a formal account of the <strong>inference execution policy</strong> as a first-class object, and towards optimization and learning methods that act on it.</p>
+    <p>Before starting my PhD I spent several years building large-scale security and AI infrastructure in industry, most recently at Akamai Technologies in London.</p>
+    <p>I recently began my PhD at <strong>Nile University of Nigeria</strong>. My research asks how generative AI inference systems should <em>decide</em>: modern serving engines make constant choices about admission, batching, scheduling, KV-cache allocation, placement and parallelism, but those decisions are buried inside engine-specific heuristics, making them hard to describe, compare, analyse or optimize independently of their implementations. I am working towards a formal account of the <strong>inference execution policy</strong> as a first-class object, and towards optimization and learning methods that act on it.</p>
     <p>The experimental vehicle for this work is <strong>OlaRT</strong>, a Rust inference runtime and research platform built on Burn and CubeCL, designed so that execution decisions are explicit, observable, replaceable and measurable rather than hard-coded.</p>
   </section>
 
@@ -236,107 +210,12 @@ footer{
     </ul>
   </section>
 
-  <section id="experience">
-    <h2>Experience</h2>
 
-    <div class="entry">
-      <div class="entry-head">
-        <h3 class="entry-title">Akamai Technologies</h3>
-        <span class="entry-meta">Oct 2022 – Apr 2026 · London, UK</span>
-      </div>
-      <p class="entry-sub">Senior Software Engineer II — Secure Internet Access</p>
-      <ul>
-        <li>Architected and launched a next-generation DNS firewall protecting <strong>280M+ daily DNS requests</strong> across 120+ enterprise customers, securing hybrid cloud and Kubernetes environments; contributed to the expansion of Akamai's Zero Trust portfolio with an estimated $15M+ ARR opportunity.</li>
-        <li>Designed a behavioral authorization system performing real-time risk evaluation across identities, devices, workloads, and API actions, enabling dynamic access control beyond traditional RBAC and WAF approaches.</li>
-        <li>Led development of an LLM-powered analytics and reporting platform processing <strong>5B+ network events monthly</strong>, building Python data pipelines and retrieval workflows that turned large-scale telemetry into customer-specific insights, anomaly detection, and automated remediation.</li>
-        <li>Developed Retrieval-Augmented Generation pipelines combining security telemetry, product metadata, and customer context; AI-generated recommendations increased upsell engagement by 30%+.</li>
-        <li>Built an MCP/agent tooling server interfacing directly with Akamai DNS systems, exposing DNS operations and telemetry as tools for AI agents with secure querying, diagnostics, and automated workflows.</li>
-        <li>Engineered scalable AI services and APIs for LLM inference, orchestration, and structured output generation with production-grade performance and observability.</li>
-        <li>Implemented deployment governance automation validating telemetry, compliance, and performance prior to release — reducing rollback incidents by 45% and accelerating release cycles by 35%.</li>
-      </ul>
-    </div>
 
-    <div class="entry">
-      <div class="entry-head">
-        <h3 class="entry-title">JPMorgan Chase &amp; Co.</h3>
-        <span class="entry-meta">Sep 2021 – Oct 2022 · Glasgow, UK</span>
-      </div>
-      <p class="entry-sub">Software Engineer — Credit Risk Management</p>
-      <ul>
-        <li>Led modernization of a legacy distributed calculation system, re-architecting it in Python and migrating critical data sources to a modern data warehouse, substantially improving data processing and analytical performance.</li>
-        <li>Owned a mission-critical distributed codebase underpinning the accuracy of systems that process millions of trades and transactions daily in support of firm-wide risk management.</li>
-        <li>Partnered with data engineering and risk analysis stakeholders to deliver solutions aligned with organizational risk objectives.</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-head">
-        <h3 class="entry-title">Sidmach Technology Ltd.</h3>
-        <span class="entry-meta">Dec 2018 – 2019 · Abuja, Nigeria</span>
-      </div>
-      <p class="entry-sub">Software Engineer</p>
-      <ul>
-        <li>Built and maintained a high-availability computer-based assessment application used by millions of students nationwide during the Joint Admissions and Matriculation Board (JAMB) examinations.</li>
-        <li>Engineered a customer experience service portal and its data pipeline for capture, formatting, and visualization of customer data.</li>
-        <li>Contributed to a biometrics-based attendance system for the National Youth Service Corps (NYSC).</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-head">
-        <h3 class="entry-title">NACOSS, ABUAD Chapter</h3>
-        <span class="entry-meta">Sep 2017 – 2018 · Ekiti, Nigeria</span>
-      </div>
-      <p class="entry-sub">Software Director</p>
-      <ul>
-        <li>Mentored undergraduate students in programming and software development.</li>
-        <li>Designed and implemented a secure electronic voting system in Java and JavaFX for the NACOSS election.</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-head">
-        <h3 class="entry-title">Aptech</h3>
-        <span class="entry-meta">Jun 2016 – Aug 2017 · Abuja, Nigeria</span>
-      </div>
-      <p class="entry-sub">Software Engineering Intern</p>
-      <ul>
-        <li>Developed interactive desktop applications in Java and JavaFX backed by relational databases.</li>
-        <li>Contributed across the full development lifecycle of small-scale projects, from requirements gathering to deployment.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="education">
-    <h2>Education</h2>
-    <div class="edu entry">
-      <div class="entry-head">
-        <h3 class="entry-title">MSc (Hons) Computer Science</h3>
-        <span class="entry-meta">Coventry University</span>
-      </div>
-      <p class="entry-sub">Distinction · Dean's List of Academic Excellence</p>
-    </div>
-    <div class="edu entry">
-      <div class="entry-head">
-        <h3 class="entry-title">BSc (Hons) Computer Science</h3>
-        <span class="entry-meta">Afe Babalola University</span>
-      </div>
-      <p class="entry-sub">GPA 4.27 / 5.0</p>
-    </div>
-  </section>
-
-  <section id="awards">
-    <h2>Awards &amp; Honours</h2>
-    <ul class="awards">
-      <li>Dean's List of Academic Excellence — Coventry University, 2021</li>
-      <li>Most Innovative Student Award — NACOSS ABUAD Chapter, 2018</li>
-      <li>Second Place — Nigeria Codefest Hackathon, 2018</li>
-    </ul>
-  </section>
 
   <footer>
     <span>Victor O. Olowofeso</span>
-    <span><a href="assets/Victor_Olowofeso_CV.pdf">CV (PDF)</a> · <a href="https://github.com/olamide142">GitHub</a></span>
+    <span><a href="https://github.com/olamide142">GitHub</a></span>
   </footer>
 
 </div>
