@@ -112,15 +112,6 @@ strong{color:var(--ink); font-weight:600}
 .awards li::before{content:"—"; position:absolute; left:0; color:var(--muted)}
 
 /* ---------- stack ---------- */
-.programme{list-style:none; counter-reset:pp; margin:0; padding:0}
-.programme li{position:relative; padding:0 0 20px 40px; margin:0 0 20px; border-bottom:1px solid var(--rule); counter-increment:pp}
-.programme li:last-child{border-bottom:0; margin-bottom:0; padding-bottom:0}
-.programme li::before{
-  content:counter(pp); position:absolute; left:0; top:2px;
-  font-family:var(--mono); font-size:12px; color:var(--accent);
-  border:1px solid var(--rule); border-radius:50%; width:25px; height:25px;
-  display:grid; place-items:center; background:var(--surface);
-}
 .quote{border-left:2px solid var(--accent); padding-left:20px; font-style:italic; color:var(--ink); margin:0 0 17px}
 .stack{font-family:var(--mono); font-size:13px; color:var(--muted); line-height:2; word-spacing:.1em}
 
@@ -175,7 +166,6 @@ footer{
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
-        <li><a href="#programme">Thesis</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
@@ -210,36 +200,6 @@ footer{
     <p class="stack">Rust · C/C++ · Python · CUDA · Burn · CubeCL · eBPF · Kafka · ClickHouse · Kubernetes · Terraform</p>
   </section>
 
-  <section id="programme">
-    <h2>Doctoral Research Programme</h2>
-    <p>My thesis develops the inference execution policy as a unifying abstraction, then works outward from formalization to optimization, to decision-making under uncertainty, and finally to distributed systems. The following are working titles; all are in preparation.</p>
-    <ol class="programme">
-      <li>
-        <span class="proj-title">Beyond Scheduling: Formalizing Inference Execution Policies for LLM Serving Systems</span>
-        <p class="proj-note">A formal representation of an execution policy as a decision system over observable runtime state, admissible actions, constraints and objectives — with policy equivalence, composition, and measurable objectives such as TTFT, inter-token latency, throughput and SLO violation.</p>
-      </li>
-      <li>
-        <span class="proj-title">Optimal Inference Execution Policies under Resource and Service-Level Constraints</span>
-        <p class="proj-note">Inference as constrained optimization over admission, batch composition, ordering, memory allocation and resource assignment, yielding an optimization oracle against which practical heuristics can be measured for optimality gap.</p>
-      </li>
-      <li>
-        <span class="proj-title">Online Inference Execution under Stochastic Workloads</span>
-        <p class="proj-note">Serving as a stochastic online resource-allocation problem with unknown generation lengths, studied with queueing-theoretic and stochastic optimization methods and evaluated by regret against offline oracles, with attention to tail latency and queue stability.</p>
-      </li>
-      <li>
-        <span class="proj-title">Adaptive Inference Execution under Non-Stationary Workloads</span>
-        <p class="proj-note">Workload shift detection and adaptive policies characterized by dynamic regret, including receding-horizon and model-predictive-control formulations — treating inference as a control problem rather than a fixed scheduling problem.</p>
-      </li>
-      <li>
-        <span class="proj-title">Learning Inference Execution Policies from Optimization Oracles</span>
-        <p class="proj-note">Learning low-latency policies supervised by expensive optimization, comparing imitation learning, contextual decision models and RL, and hybrid architectures where learned models propose and optimization enforces feasibility within millisecond decision budgets.</p>
-      </li>
-      <li>
-        <span class="proj-title">Policy-Driven Inference Optimization across Heterogeneous and Distributed AI Systems</span>
-        <p class="proj-note">Joint routing, placement, scheduling and execution configuration across heterogeneous accelerators and distributed KV caches, with hierarchical policies separating slow-timescale provisioning from fine-grained runtime scheduling.</p>
-      </li>
-    </ol>
-  </section>
 
   <section id="projects">
     <h2>Research &amp; Projects</h2>
