@@ -112,6 +112,16 @@ strong{color:var(--ink); font-weight:600}
 .awards li::before{content:"—"; position:absolute; left:0; color:var(--muted)}
 
 /* ---------- stack ---------- */
+.programme{list-style:none; counter-reset:pp; margin:0; padding:0}
+.programme li{position:relative; padding:0 0 20px 40px; margin:0 0 20px; border-bottom:1px solid var(--rule); counter-increment:pp}
+.programme li:last-child{border-bottom:0; margin-bottom:0; padding-bottom:0}
+.programme li::before{
+  content:counter(pp); position:absolute; left:0; top:2px;
+  font-family:var(--mono); font-size:12px; color:var(--accent);
+  border:1px solid var(--rule); border-radius:50%; width:25px; height:25px;
+  display:grid; place-items:center; background:var(--surface);
+}
+.quote{border-left:2px solid var(--accent); padding-left:20px; font-style:italic; color:var(--ink); margin:0 0 17px}
 .stack{font-family:var(--mono); font-size:13px; color:var(--muted); line-height:2; word-spacing:.1em}
 
 /* ---------- footer ---------- */
@@ -165,6 +175,7 @@ footer{
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
+        <li><a href="#programme">Thesis</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
@@ -177,32 +188,65 @@ footer{
     <h2>About</h2>
     <p class="lead">I am an AI systems engineer and researcher building high-performance infrastructure for intelligent systems. My work sits where machine learning meets low-level systems engineering: inference runtimes, compilers, scheduling policies, and the memory and execution machinery that decides whether a model is merely correct or actually fast.</p>
     <p>Most recently I spent three and a half years at <strong>Akamai Technologies</strong> in London, where I architected a next-generation DNS firewall serving 280M+ daily requests and led an LLM-powered analytics platform processing 5B+ network events monthly. Before that I worked on distributed credit-risk calculation systems at <strong>JPMorgan Chase</strong>. I hold an MSc in Computer Science with Distinction from <strong>Coventry University</strong>.</p>
-    <p>I am currently building <a href="https://github.com/olamide142"><strong>Ola-RT</strong></a>, an experimental inference runtime and research platform for adaptive, scalable model execution. I recently began my PhD, where I work on machine learning systems and optimization.</p>
+    <p>I recently began my PhD. My research asks how generative AI inference systems should <em>decide</em>: modern serving engines make constant choices about admission, batching, scheduling, KV-cache allocation, placement and parallelism, but those decisions are buried inside engine-specific heuristics, making them hard to describe, compare, analyse or optimize independently of their implementations. I am working towards a formal account of the <strong>inference execution policy</strong> as a first-class object, and towards optimization and learning methods that act on it.</p>
+    <p>The experimental vehicle for this work is <a href="https://github.com/olamide142/ola-rt"><strong>OlaRT</strong></a>, a Rust inference runtime and research platform built on Burn and CubeCL, designed so that execution decisions are explicit, observable, replaceable and measurable rather than hard-coded.</p>
   </section>
 
   <section id="research">
     <h2>Research Interests</h2>
     <ul class="tags">
-      <li>Machine Learning Systems</li>
-      <li>Genetic Programming</li>
-      <li>Optimization</li>
-      <li>Formal Logic &amp; Methods</li>
+      <li>Inference Execution Policies</li>
+      <li>LLM &amp; VLM Serving Systems</li>
+      <li>Mathematical Optimization</li>
+      <li>Stochastic &amp; Online Optimization</li>
+      <li>Queueing Theory</li>
       <li>Reinforcement Learning</li>
-      <li>Compilers</li>
-      <li>Low-Level Systems</li>
-      <li>Operations Research</li>
+      <li>Compilers &amp; GPU Kernels</li>
+      <li>Distributed Systems</li>
     </ul>
-    <p>My research interests sit at the intersection of machine learning systems, operations research, optimization, and systems engineering. Concretely, I am interested in how inference systems should <em>decide</em> — how execution policies, scheduling, and memory management can adapt to workload structure rather than being fixed at deployment time.</p>
-    <p>Active threads include LLM and VLM inference systems; dynamic inference scheduling and execution policies; KV-cache management, batching, and memory optimization; GPU kernels and ML compilers; distributed and adaptive AI systems; and eBPF and kernel-level security.</p>
+    <p>My interests sit at the intersection of machine learning systems, operations research, and systems engineering. The organizing question is:</p>
+    <p class="quote">How should modern AI workloads execute when latency, throughput, memory, modality, hardware, cost, and service-level objectives all matter at once?</p>
+    <p>Answering it pulls in formal abstraction, constrained optimization, queueing and stochastic control, online learning under non-stationarity, and a great deal of low-level runtime engineering. Adjacent threads include GPU kernels and ML compilers, multimodal and VLM inference, and eBPF and kernel-level systems.</p>
     <p class="stack">Rust · C/C++ · Python · CUDA · Burn · CubeCL · eBPF · Kafka · ClickHouse · Kubernetes · Terraform</p>
+  </section>
+
+  <section id="programme">
+    <h2>Doctoral Research Programme</h2>
+    <p>My thesis develops the inference execution policy as a unifying abstraction, then works outward from formalization to optimization, to decision-making under uncertainty, and finally to distributed systems. The following are working titles; all are in preparation.</p>
+    <ol class="programme">
+      <li>
+        <span class="proj-title">Beyond Scheduling: Formalizing Inference Execution Policies for LLM Serving Systems</span>
+        <p class="proj-note">A formal representation of an execution policy as a decision system over observable runtime state, admissible actions, constraints and objectives — with policy equivalence, composition, and measurable objectives such as TTFT, inter-token latency, throughput and SLO violation.</p>
+      </li>
+      <li>
+        <span class="proj-title">Optimal Inference Execution Policies under Resource and Service-Level Constraints</span>
+        <p class="proj-note">Inference as constrained optimization over admission, batch composition, ordering, memory allocation and resource assignment, yielding an optimization oracle against which practical heuristics can be measured for optimality gap.</p>
+      </li>
+      <li>
+        <span class="proj-title">Online Inference Execution under Stochastic Workloads</span>
+        <p class="proj-note">Serving as a stochastic online resource-allocation problem with unknown generation lengths, studied with queueing-theoretic and stochastic optimization methods and evaluated by regret against offline oracles, with attention to tail latency and queue stability.</p>
+      </li>
+      <li>
+        <span class="proj-title">Adaptive Inference Execution under Non-Stationary Workloads</span>
+        <p class="proj-note">Workload shift detection and adaptive policies characterized by dynamic regret, including receding-horizon and model-predictive-control formulations — treating inference as a control problem rather than a fixed scheduling problem.</p>
+      </li>
+      <li>
+        <span class="proj-title">Learning Inference Execution Policies from Optimization Oracles</span>
+        <p class="proj-note">Learning low-latency policies supervised by expensive optimization, comparing imitation learning, contextual decision models and RL, and hybrid architectures where learned models propose and optimization enforces feasibility within millisecond decision budgets.</p>
+      </li>
+      <li>
+        <span class="proj-title">Policy-Driven Inference Optimization across Heterogeneous and Distributed AI Systems</span>
+        <p class="proj-note">Joint routing, placement, scheduling and execution configuration across heterogeneous accelerators and distributed KV caches, with hierarchical policies separating slow-timescale provisioning from fine-grained runtime scheduling.</p>
+      </li>
+    </ol>
   </section>
 
   <section id="projects">
     <h2>Research &amp; Projects</h2>
     <ul class="projects">
       <li>
-        <span class="proj-title">Ola-RT — An Experimental AI Inference Runtime</span>
-        <p class="proj-note">A research platform for efficient, adaptive, and scalable model execution, exploring dynamic scheduling, KV-cache management, and compiler-assisted kernel selection.</p>
+        <span class="proj-title"><a href="https://github.com/olamide142/ola-rt">OlaRT — An Experimental AI Inference Runtime</a></span>
+        <p class="proj-note">An opinionated Rust runtime and research framework for adaptive, scalable AI inference, built on Burn and CubeCL. Covers LLM, VLM and vision workloads, GPU execution, request scheduling, KV-cache management, continuous batching, distributed inference, runtime cost modelling and learned scheduling.</p>
       </li>
       <li>
         <span class="proj-title">A Domain-Specific Language Compiler for Security Rule Definition</span>
