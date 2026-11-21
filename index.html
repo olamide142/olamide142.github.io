@@ -81,7 +81,12 @@ strong{color:var(--ink); font-weight:600}
   border-radius:100px; padding:5px 13px;
 }
 
-/* ---------- entries ---------- */
+/* ---------- phd progress ---------- */
+.log{list-style:none; margin:0; padding:0}
+.log li{display:grid; grid-template-columns:96px 1fr; gap:0 20px; padding:0 0 18px; margin:0 0 18px; border-bottom:1px solid var(--rule)}
+.log li:last-child{border-bottom:0; margin-bottom:0; padding-bottom:0}
+.log time{font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.03em; text-transform:uppercase; padding-top:4px}
+.links{font-family:var(--sans); font-size:13.5px; display:flex; flex-wrap:wrap; gap:4px 14px; margin:8px 0 0}
 
 /* ---------- project list ---------- */
 .projects{list-style:none; margin:0; padding:0}
@@ -113,6 +118,8 @@ footer{
   nav{margin-top:32px}
   nav ul{gap:4px 18px}
   section{padding-top:36px}
+  .log li{grid-template-columns:1fr; gap:4px}
+  .log time{padding-top:0}
     }
 </style>
 </head>
@@ -142,6 +149,7 @@ footer{
     <nav>
       <ul>
         <li><a href="#about">About</a></li>
+        <li><a href="#phd">PhD Progress</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#projects">Projects</a></li>
       </ul>
@@ -153,7 +161,37 @@ footer{
     <p class="lead">I am an AI systems engineer and researcher building high-performance infrastructure for intelligent systems. My work sits where machine learning meets low-level systems engineering: inference runtimes, compilers, scheduling policies, and the memory and execution machinery that decides whether a model is merely correct or actually fast.</p>
     <p>Before starting my PhD I spent several years building large-scale security and AI infrastructure in industry, most recently at Akamai Technologies in London.</p>
     <p>I recently began my PhD at <strong>Nile University of Nigeria</strong>. My research asks how generative AI inference systems should <em>decide</em>: modern serving engines make constant choices about admission, batching, scheduling, KV-cache allocation, placement and parallelism, but those decisions are buried inside engine-specific heuristics, making them hard to describe, compare, analyse or optimize independently of their implementations. I am working towards a formal account of the <strong>inference execution policy</strong> as a first-class object, and towards optimization and learning methods that act on it.</p>
-    <p>The experimental vehicle for this work is <strong>OlaRT</strong>, a Rust inference runtime and research platform built on Burn and CubeCL, designed so that execution decisions are explicit, observable, replaceable and measurable rather than hard-coded.</p>
+    <p>The experimental vehicle for this work is <a href="https://github.com/olamide142/ola-rt"><strong>OlaRT</strong></a>, a Rust inference runtime and research platform built on Burn and CubeCL, designed so that execution decisions are explicit, observable, replaceable and measurable rather than hard-coded.</p>
+  </section>
+
+  <section id="phd">
+    <h2>PhD Progress</h2>
+    <ul class="log">
+      <li>
+        <time datetime="2026-11-20">Nov 2026</time>
+        <div>
+          <span class="proj-title">A Compositional Formalization of Inference Execution Policies in Ola-RT</span>
+          <span class="venue">Preprint · Zenodo</span>
+          <p class="proj-note">Formalizes admission, scheduling, batching and preemption in OlaRT as an observation, a policy-proposed plan, and a feasibility check that gates every commit. Proves which guarantees hold for every hosted policy, including when the per-plan KV-cache check implies a global memory invariant, and validates the model against an executable specification and on an RTX 4090.</p>
+          <p class="links">
+            <a href="assets/papers/compositional_formalization.pdf">PDF</a>
+            <a href="https://doi.org/10.5281/zenodo.24396444">doi:10.5281/zenodo.24396444</a>
+            <a href="https://github.com/olamide142/ola-rt/tree/95a18e55c3ac2740ba9475e4fe3871240d9a9da8">Code (paper version)</a>
+          </p>
+        </div>
+      </li>
+      <li>
+        <time datetime="2026-11">Nov 2026</time>
+        <div>
+          <span class="proj-title">Formalization and Adaptation of Inference Execution Policies under Non-Stationary Workloads</span>
+          <span class="venue">Research seminar · Nile University of Nigeria</span>
+          <p class="proj-note">A seminar presenting the research programme: treating admission, scheduling and batching in AI serving as a resource-allocation problem, formalizing those execution decisions, and adapting them as demand changes, with OlaRT as the evaluation platform.</p>
+          <p class="links">
+            <a href="https://docs.google.com/presentation/d/1DDcXtIc4gBDRbWI3-FMBfyrnDMLw5Xm5Uu2l7cj95T0/edit?usp=sharing">Slides</a>
+          </p>
+        </div>
+      </li>
+    </ul>
   </section>
 
   <section id="research">
@@ -179,8 +217,8 @@ footer{
     <h2>Research &amp; Projects</h2>
     <ul class="projects">
       <li>
-        <span class="proj-title">OlaRT — An Experimental AI Inference Runtime</span>
-        <span class="venue">Private repository · in development</span>
+        <span class="proj-title"><a href="https://github.com/olamide142/ola-rt">OlaRT — An Experimental AI Inference Runtime</a></span>
+        <span class="venue">Open source · in development</span>
         <p class="proj-note">An opinionated Rust runtime and research framework for adaptive, scalable AI inference, built on Burn and CubeCL. Covers LLM, VLM and vision workloads, GPU execution, request scheduling, KV-cache management, continuous batching, distributed inference, runtime cost modelling and learned scheduling.</p>
       </li>
       <li>
